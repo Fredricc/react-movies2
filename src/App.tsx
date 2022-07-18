@@ -1,26 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import UseEffectExample from './UseEffectExample';
+import GrandParent from './GrandParent';
+import ValueContext from './ValueContext';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const [hide, setHide] = useState(false);
+
+  return(
+    <>
+    <input type="checkbox" onChange={() => setHide(!hide)} /> Hide
+    {hide ? null : <UseEffectExample />}
+
+    <ValueContext.Provider value={hide}>
+    <GrandParent />
+    </ValueContext.Provider>
+    </>
+  )
 }
 
 export default App;
+
