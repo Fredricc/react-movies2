@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import UseEffectExample from './UseEffectExample';
-import GrandParent from './GrandParent';
-import ValueContext from './ValueContext';
+import IndividualMovies from './Movies/IndividualMovies';
+import { movieDTO } from './Movies/movies.model';
 
 function App() {
-const [hide, setHide] = useState(false);
+  const testMovie: movieDTO = {
+    id: 1,
+    title: 'Spider-Man: Far from Home',
+    poster: 'https://upload.wikimedia.org/wikipedia/en/b/bd/Spider-Man_Far_From_Home_poster.jpg'
+  }
 
   return(
     <>
-    <input type="checkbox" onChange={() => setHide(!hide)} /> Hide
-    {hide ? null : <UseEffectExample />}
-
-    <ValueContext.Provider value={hide}>
-    <GrandParent />
-    </ValueContext.Provider>
+    <IndividualMovies {...testMovie} />
     </>
   )
 }
