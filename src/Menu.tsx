@@ -1,16 +1,37 @@
 import { NavLink } from "react-router-dom";
 
+
 export default function Menu(){
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-                <a className= "navbar-brand" href="/">React Movies</a>
+                <NavLink className= "navbar-brand" to="/">React Movies</NavLink>
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav me-auto mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link" href="/genres">
+                            <NavLink className="nav-link" to="/genres">
                                 Genres
-                            </a>
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/movies/filter">
+                                Filter Movies
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/actors">
+                                Actors
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/movietheaters">
+                                Movie Theaters
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/movies/create">
+                                Create a Movie
+                            </NavLink>
                         </li>
 
                     </ul>

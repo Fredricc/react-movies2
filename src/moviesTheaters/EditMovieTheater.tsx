@@ -1,7 +1,7 @@
-export default function EditTheater(){
+export default function EditMovieTheater(){
     return(
         <>
-        <h3>Edit Theaters</h3>
+        <h3>Edit Movie Theaters</h3>
         
         </>
     )

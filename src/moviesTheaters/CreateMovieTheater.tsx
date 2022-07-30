@@ -1,7 +1,7 @@
-export default function CreateTheater(){
+export default function CreateMovieTheater(){
     return(
         <>
-        <h3>Create Theaters</h3>
+        <h3>Create Movie Theaters</h3>
         
         </>
     )

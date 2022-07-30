@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
+
 export default function IndexGenres(){
-    return(<>
+    return(
+    <>
         <h3>Genres</h3>
-        <h4>Hello World....</h4>
-        </>
+        <Link className="btn btn-primary" to="/genres/create">Create genres</Link>
+    </>
     )
 }
