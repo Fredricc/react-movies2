@@ -9,7 +9,7 @@ function configureValidations(){
                 return firstLetter === firstLetter.toUpperCase();
              }
              return true;
-        })
+        }) 
     })
 }
 
