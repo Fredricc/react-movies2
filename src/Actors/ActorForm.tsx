@@ -3,6 +3,7 @@ import TextField from "../Forms/TextFields";
 import Button from "../Movies/utils/Button";
 import { actorsCreationDTO } from "./Actors.models";
 import * as Yup from 'yup';
+import DateField from "../Forms/DateField";
 
 export default function ActorForm(props: actorFormProps) {
     return(
@@ -10,12 +11,14 @@ export default function ActorForm(props: actorFormProps) {
         initialValues={props.model}
         onSubmit={props.onSubmit}
         validationSchema={Yup.object({
-            name: Yup.string().required('This field is required').firstLetterUppercase()
+            name: Yup.string().required('This field is required').firstLetterUppercase(),
+            dateOfBirth: Yup.date().nullable().required('This field is required')
         })}
         >
         {(formikProps) => (
             <Form>
                 <TextField displayName="Name" field="name" />
+                <DateField displayName="Date of Birth" field="dateOfBirth" />
 
                 <Button disabled={formikProps.isSubmitting} 
                 type="submit"
