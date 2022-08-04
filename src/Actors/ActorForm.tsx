@@ -4,6 +4,7 @@ import Button from "../Movies/utils/Button";
 import { actorsCreationDTO } from "./Actors.models";
 import * as Yup from 'yup';
 import DateField from "../Forms/DateField";
+import ImageField from "../Forms/ImageField";
 
 export default function ActorForm(props: actorFormProps) {
     return(
@@ -19,7 +20,8 @@ export default function ActorForm(props: actorFormProps) {
             <Form>
                 <TextField displayName="Name" field="name" />
                 <DateField displayName="Date of Birth" field="dateOfBirth" />
-
+                <ImageField displayName="Picture" />
+                
                 <Button disabled={formikProps.isSubmitting} 
                 type="submit"
                 >Save Changes</Button>
