@@ -20,8 +20,8 @@ export default function ActorForm(props: actorFormProps) {
             <Form>
                 <TextField displayName="Name" field="name" />
                 <DateField displayName="Date of Birth" field="dateOfBirth" />
-                <ImageField displayName="Picture" />
-                
+                <ImageField displayName="Picture" field="picture" imageURL={props.model.pictureURL} />
+
                 <Button disabled={formikProps.isSubmitting} 
                 type="submit"
                 >Save Changes</Button>
