@@ -43,7 +43,7 @@ export default function MultipleSector(props: multipleSelectorProps){
             </div>
 
             <ul>
-                {props.nonSelected.map(item =>
+                {props.selected.map(item =>
                     <li key={item.key} onClick={() => deselect(item)}>{item.value}</li>)}
             </ul>
 
