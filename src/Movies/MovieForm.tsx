@@ -11,6 +11,8 @@ import MultipleSector, { multipleSelectorModel } from "../Forms/MuiltipleSelecto
 import { useState } from "react";
 import { genreDTO } from "../Genres/genres.model";
 import { movieTheaterDTO } from "../moviesTheaters/movieTheater.model";
+import TypeAheadActors from "../Forms/TypeAheadActors";
+import { actorMovieDTO } from "../Actors/actors.models";
 
 export default function MovieForm(props: movieFormProps){
 
@@ -22,6 +24,8 @@ export default function MovieForm(props: movieFormProps){
         useState(mapToModel(props.selectedMovieTheaters));
     const [nonSelectedMovieTheaters, setNonSelectedMovieTheaters] = 
         useState(mapToModel(props.nonSelectedMovieTheaters));
+
+    const [selectedActors, setSelectedActors] = useState(props.selectedActors)
 
     function mapToModel(items: {id: number, name: string}[]): multipleSelectorModel[] {
         return items.map(item=> {
@@ -71,6 +75,30 @@ export default function MovieForm(props: movieFormProps){
                     }}
                 />
 
+                <TypeAheadActors displayName="Actors" actors={selectedActors} 
+                onAdd={actors => {
+                    setSelectedActors(actors);
+                }}
+                onRemove={actor => {
+                    const actors = selectedActors.filter(x => x !== actor);
+                    setSelectedActors(actors);
+                }}
+                listUI={(actor: actorMovieDTO) =>
+                <>
+                    {actor.name} / <input placeholder="Character" type="text"
+                    value={actor.character}
+                    onChange={e => {
+                        const index = selectedActors.findIndex(x=> x.id === actor.id);
+
+                        const actors = [...selectedActors];
+                        actors[index].character = e.currentTarget.value;
+                        setSelectedActors(actors);
+                    }} />
+                </>
+                }
+
+                />
+
                 <Button disabled={formikProps.isSubmitting} type='submit'>Save Changes</Button>
                 <Link className="btn btn-secondary" to="/genres">Cancel</Link>
             </Form>
@@ -86,5 +114,6 @@ interface movieFormProps {
     nonSelectedGenres: genreDTO[];
     selectedMovieTheaters: movieTheaterDTO[];
     nonSelectedMovieTheaters: movieTheaterDTO[];
+    selectedActors: actorMovieDTO[];
 
 }

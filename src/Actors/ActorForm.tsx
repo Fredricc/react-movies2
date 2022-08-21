@@ -1,11 +1,10 @@
 import { Form, Formik, FormikHelpers } from "formik";
 import TextField from "../Forms/TextFields";
-import Button from "../Movies/utils/Button";
-import { actorsCreationDTO } from "./Actors.models";
 import * as Yup from 'yup';
 import DateField from "../Forms/DateField";
 import ImageField from "../Forms/ImageField";
 import MarkdownField from "../Forms/MarkdownFieldProps";
+import { actorsCreationDTO } from "./actors.models";
 
 export default function ActorForm(props: actorFormProps) {
     return(
