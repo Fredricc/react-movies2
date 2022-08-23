@@ -1,3 +1,5 @@
+import { actorMovieDTO } from "../Actors/actors.models";
+
 export interface movieDTO {
     id: number;
     title: string;
@@ -13,6 +15,7 @@ export interface movieCreationDTO{
     posterURL?: string;
     genresIds?: number[];
     movieTheatersIds?: number[];
+    actors?: actorMovieDTO[];
 
 }
 
