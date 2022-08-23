@@ -4,7 +4,8 @@ import * as Yup from 'yup';
 import DateField from "../Forms/DateField";
 import ImageField from "../Forms/ImageField";
 import MarkdownField from "../Forms/MarkdownFieldProps";
-import { actorsCreationDTO } from "./actors.models";
+import { actorsCreationDTO } from "./actors.models"
+import Button from "../Movies/utils/Button";
 
 export default function ActorForm(props: actorFormProps) {
     return(

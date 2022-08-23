@@ -1,3 +1,4 @@
+import { actorMovieDTO } from "../Actors/actors.models";
 import { genreDTO } from "../Genres/genres.model";
 import { movieTheaterDTO } from "../moviesTheaters/movieTheater.model";
 import MovieForm from "./MovieForm";
@@ -13,6 +14,14 @@ export default function EditMovie(){
     const selectedMovieTheaters: movieTheaterDTO[] = 
     [{id: 1, name: 'Sambil'}]
 
+    const selectedActors: actorMovieDTO = [{
+        id: 3,
+      name: "Hellen",
+      character: 'Geralt',
+      picture:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/210120-D-WD757-1975_%2850860511978%29_%28cropped%29.jpg/330px-210120-D-WD757-1975_%2850860511978%29_%28cropped%29.jpg",
+    }]
+
 
     return(
         <>
@@ -27,7 +36,7 @@ export default function EditMovie(){
 
             nonSelectedMovieTheaters={nonSelectedMovieTheaters}
             selectedMovieTheaters={nonSelectedMovieTheaters}
-            selectedActors={[]}
+            selectedActors={selectedActors}
 
         />
         
