@@ -1,11 +1,11 @@
 import { Form, Formik, FormikHelpers } from "formik";
 import { Link } from "react-router-dom";
 import TextField from "../Forms/TextFields";
-import Button from "../Movies/utils/Button";
+import Button from "../utils/Button";
 import { movieTheaterCreationDTO } from "./movieTheater.model";
 import * as Yup from 'yup';
 import MapField from "../Forms/MapFields";
-import coordinateDTO from "../Movies/utils/coordinates.model";
+import coordinateDTO from "../utils/coordinates.model";
 
 export default function MovieTheaterForm(props: movieTheaterForm){
 
@@ -40,7 +40,7 @@ export default function MovieTheaterForm(props: movieTheaterForm){
                     <Button disabled={formikProps.isSubmitting} type="submit">
                         Save Changes
                     </Button>
-                    <Link className="btn btn-secondary" to="/moviestheaters">Cancel</Link>
+                    <Link className="btn btn-secondary" to="/moviesTheaters">Cancel</Link>
 
                 </Form>
             )}

@@ -11,7 +11,7 @@ import CreateMovie from "../CreateMovies";
 import EditMovie from "../EditMovie";
 import FilterMovies from "../FilterMovies";
 import LandingPage from "../LandingPage";
-import RedirectToLandingPage from "../utils/RedirectToLandingPage";
+import RedirectToLandingPage from "../../utils/RedirectToLandingPage";
 
 const routes = [
     {path: '/genres', component: IndexGenres, exact: true},

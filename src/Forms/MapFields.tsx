@@ -1,6 +1,6 @@
 import { useFormikContext } from "formik";
-import coordinateDTO from "../Movies/utils/coordinates.model";
-import Map from "../Movies/utils/Map";
+import coordinateDTO from "../utils/coordinates.model";
+import Map from "../utils/Map";
 
 
 export default function MapField(props: mapFieldProps){

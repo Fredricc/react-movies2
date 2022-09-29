@@ -1,13 +1,13 @@
 import { Form, Formik, FormikHelpers } from "formik";
 import { movieCreationDTO } from "./movies.model";
 import * as Yup from 'yup';
-import Button from "./utils/Button";
+import Button from "../utils/Button";
 import { Link } from "react-router-dom";
 import TextField from "../Forms/TextFields";
 import DateField from "../Forms/DateField";
 import ImageField from "../Forms/ImageField";
 import CheckboxField from "../Forms/CheckboxField";
-import MultipleSector, { multipleSelectorModel } from "../Forms/MuiltipleSelector";
+import MultipleSector, { multipleSelectorModel } from "../Forms/MultipleSelector";
 import { useState } from "react";
 import { genreDTO } from "../Genres/genres.model";
 import { movieTheaterDTO } from "../moviesTheaters/movieTheater.model";

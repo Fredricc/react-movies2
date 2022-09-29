@@ -5,7 +5,7 @@ import DateField from "../Forms/DateField";
 import ImageField from "../Forms/ImageField";
 import MarkdownField from "../Forms/MarkdownFieldProps";
 import { actorsCreationDTO } from "./actors.models"
-import Button from "../Movies/utils/Button";
+import Button from "../utils/Button";
 
 export default function ActorForm(props: actorFormProps) {
     return(

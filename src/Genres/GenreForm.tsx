@@ -1,6 +1,6 @@
 import { Formik, Form, FormikHelpers } from "formik";
 import { Link } from "react-router-dom";
-import Button from "../Movies/utils/Button";
+import Button from "../utils/Button";
 import * as Yup from 'yup';
 import TextField from "../Forms/TextFields";
 import { genreCreationDTO } from "./genres.model";
@@ -11,7 +11,8 @@ export default function GenreForm(props: genreFormProps){
         <Formik initialValues={props.model}
         onSubmit={props.onSubmit}
         validationSchema={Yup.object({
-           name: Yup.string().required('this field id required').firstLetterUppercase() 
+           name: Yup.string().required('this field id required')
+           .max(50, 'Max length is 50 characters').firstLetterUppercase() 
         })}
         >
             {(formikProps) => (
