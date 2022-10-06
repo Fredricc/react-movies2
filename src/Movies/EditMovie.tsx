@@ -1,4 +1,4 @@
-import { actorMovieDTO } from "../Actors/actors.models";
+import { actorMovieDTO } from "../actors/actors.model";
 import { genreDTO } from "../Genres/genres.model";
 import { movieTheaterDTO } from "../moviesTheaters/movieTheater.model";
 import MovieForm from "./MovieForm";

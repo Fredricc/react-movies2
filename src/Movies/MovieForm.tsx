@@ -3,16 +3,16 @@ import { movieCreationDTO } from "./movies.model";
 import * as Yup from 'yup';
 import Button from "../utils/Button";
 import { Link } from "react-router-dom";
-import TextField from "../Forms/TextFields";
-import DateField from "../Forms/DateField";
-import ImageField from "../Forms/ImageField";
-import CheckboxField from "../Forms/CheckboxField";
-import MultipleSector, { multipleSelectorModel } from "../Forms/MultipleSelector";
+import TextField from "../forms/TextField";
+import DateField from "../forms/DateField";
+import ImageField from "../forms/ImageField";
+import CheckboxField from "../forms/CheckboxField";
+import MultipleSector, { multipleSelectorModel } from "../forms/MultipleSelector";
 import { useState } from "react";
 import { genreDTO } from "../Genres/genres.model";
 import { movieTheaterDTO } from "../moviesTheaters/movieTheater.model";
-import TypeAheadActors from "../Forms/TypeAheadActors";
-import { actorMovieDTO } from "../Actors/actors.models";
+import TypeAheadActors from "../forms/TypeAheadActors";
+import { actorMovieDTO } from "../actors/actors.model";
 
 export default function MovieForm(props: movieFormProps){
 
