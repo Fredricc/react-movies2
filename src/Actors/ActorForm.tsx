@@ -1,10 +1,10 @@
 import { Form, Formik, FormikHelpers } from "formik";
-import TextField from "../Forms/TextFields";
+import TextField from "../forms/TextField";
 import * as Yup from 'yup';
-import DateField from "../Forms/DateField";
-import ImageField from "../Forms/ImageField";
-import MarkdownField from "../Forms/MarkdownFieldProps";
-import { actorsCreationDTO } from "./actors.models"
+import DateField from "../forms/DateField";
+import ImageField from "../forms/ImageField";
+import MarkdownField from "../forms/MarkdownField";
+import { actorCreationDTO } from "./actors.model"
 import Button from "../utils/Button";
 
 export default function ActorForm(props: actorFormProps) {
@@ -35,6 +35,6 @@ export default function ActorForm(props: actorFormProps) {
 }
 
 interface actorFormProps{
-    model: actorsCreationDTO;
-    onSubmit(values: actorsCreationDTO, action: FormikHelpers<actorsCreationDTO>): void;
+    model: actorCreationDTO;
+    onSubmit(values: actorCreationDTO, action: FormikHelpers<actorsCreationDTO>): void;
 }
