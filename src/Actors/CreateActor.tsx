@@ -1,43 +1,43 @@
-import { Form, Formik, FormikHelpers } from "formik";
-import { Link } from "react-router-dom";
-import TextField from '../forms/TextField';
-import DateField from '../forms/DateField';
-import ImageField from '../forms/ImageField';
-import MarkdownField from '../forms/MarkdownField';
-import Button from '../utils/Button';
-import {actorCreationDTO} from './actors.model'
-import * as Yup from 'yup';
+import { useState } from 'react'
+import DisplayErrors from '../utils/DisplayErrors';
+import ActorForm from './ActorForm'
+import { actorCreationDTO } from './actors.model'
+import {convertActorToFormData} from '../utils/formDataUtils';
+import axios from 'axios';
+import { urlActors } from '../endpoints';
+import { useHistory } from 'react-router-dom';
 
+export default function CreateActor(){
 
-export default function ActorForm(props: actorFormProps) {
+    const [errors, setErrors] = useState<string[]>([]);
+    const history = useHistory();
+
+    async function create(actor: actorCreationDTO){
+        try{
+            const formData = convertActorToFormData(actor);
+
+            await axios({
+                method: 'post',
+                url: urlActors,
+                data: formData,
+                headers: {'Content-Type': 'multipart/form-data'}
+            });
+            history.push('/actors');
+        }
+        catch (error){
+            if (error && error.response){
+                setErrors(error.response.data);
+            }
+        }
+    }
+
     return (
-        <Formik
-            initialValues={props.model}
-            onSubmit={props.onSubmit}
-            validationSchema={Yup.object({
-                name: Yup.string().required('This field is required').firstLetterUppercase(),
-                dateOfBirth: Yup.date().nullable().required('This field is required')
-            })}
-        >
-            {(formikProps) => (
-                <Form>
-                    <TextField displayName="Name" field="name" />
-                    <DateField displayName="Date of Birth" field="dateOfBirth" />
-                    <ImageField displayName="Picture" field="picture" 
-                    imageURL={props.model.pictureURL} />
-                    <MarkdownField displayName="Biography" field="biography" />
-
-                    <Button disabled={formikProps.isSubmitting}
-                        type="submit"
-                    >Save Changes</Button>
-                    <Link to="/actors" className="btn btn-secondary">Cancel</Link>
-                </Form>
-            )}
-        </Formik>
+        <>
+            <h3>Create Actor</h3>
+            <DisplayErrors errors={errors} />
+            <ActorForm model={{name: '', dateOfBirth: undefined}}
+                onSubmit={async values => await create(values)}
+            />
+        </>
     )
-}
-
-interface actorFormProps {
-    model: actorCreationDTO;
-    onSubmit(values: actorCreationDTO, action: FormikHelpers<actorCreationDTO>): void;
 }

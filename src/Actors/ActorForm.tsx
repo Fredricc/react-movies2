@@ -36,5 +36,5 @@ export default function ActorForm(props: actorFormProps) {
 
 interface actorFormProps{
     model: actorCreationDTO;
-    onSubmit(values: actorCreationDTO, action: FormikHelpers<actorsCreationDTO>): void;
+    onSubmit(values: actorCreationDTO, action: FormikHelpers<actorCreationDTO>): void;
 }
