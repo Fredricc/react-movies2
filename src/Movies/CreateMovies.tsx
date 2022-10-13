@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { urlMovies } from '../endpoints';
-import { genreDTO } from '../Genres/genres.model';
+import { genreDTO } from '../genres/genres.model';
 import { movieTheaterDTO } from '../moviesTheaters/movieTheater.model';
 import DisplayErrors from '../utils/DisplayErrors';
 import { convertMovieToFormData } from '../utils/formDataUtils';

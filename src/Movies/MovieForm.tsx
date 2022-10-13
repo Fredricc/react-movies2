@@ -9,10 +9,10 @@ import ImageField from "../forms/ImageField";
 import CheckboxField from "../forms/CheckboxField";
 import MultipleSector, { multipleSelectorModel } from "../forms/MultipleSelector";
 import { useState } from "react";
-import { genreDTO } from "../Genres/genres.model";
 import { movieTheaterDTO } from "../moviesTheaters/movieTheater.model";
 import TypeAheadActors from "../forms/TypeAheadActors";
 import { actorMovieDTO } from "../actors/actors.model";
+import { genreDTO } from "../genres/genres.model";
 
 export default function MovieForm(props: movieFormProps){
 
