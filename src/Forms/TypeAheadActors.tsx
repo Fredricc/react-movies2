@@ -1,42 +1,26 @@
-import { ReactElement, useState } from "react";
-import { Typeahead } from "react-bootstrap-typeahead";
-import { actorMovieDTO } from "../actors/actors.model";
-
+import axios, { AxiosResponse } from 'axios';
+import { ReactElement, useState } from 'react';
+import { AsyncTypeahead } from 'react-bootstrap-typeahead'
+import { actorMovieDTO } from '../actors/actors.model'
+import { urlActors } from '../endpoints';
 
 export default function TypeAheadActors(props: typeAheadActorsProps) {
-  const actors: actorMovieDTO[] = [
-    {
-      id: 1,
-      name: "Fred",
-      character: "",
-      picture:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/330px-Dwayne_Johnson_2014_%28cropped%29.jpg",
-    },
-    {
-      id: 2,
-      name: "Felipe",
-      character: "",
-      picture:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Felipe_Anderson_2021.jpg/300px-Felipe_Anderson_2021.jpg",
-    },
-    {
-      id: 3,
-      name: "Hellen",
-      character: "",
-      picture:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/210120-D-WD757-1975_%2850860511978%29_%28cropped%29.jpg/330px-210120-D-WD757-1975_%2850860511978%29_%28cropped%29.jpg",
-    },
-    {
-      id: 4,
-      name: "Alice",
-      character: "",
-      picture:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Amber_Rose_2018_by_Glenn_Francis.jpg/330px-Amber_Rose_2018_by_Glenn_Francis.jpg",
-    }]
+
+    const [actors, setActors] = useState<actorMovieDTO[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const selected: actorMovieDTO[] = [];
 
     const [draggedElement, setDraggedElement] = useState<actorMovieDTO | undefined>(undefined);
+
+    function handleSearch(query: string){
+        setIsLoading(true);
+        axios.get(`${urlActors}/searchByName/${query}`)
+        .then((response: AxiosResponse<actorMovieDTO[]>) => {
+            setActors(response.data);
+            setIsLoading(false);
+        })
+    }
 
     function handleDragStart(actor: actorMovieDTO){
         setDraggedElement(actor);
@@ -61,19 +45,19 @@ export default function TypeAheadActors(props: typeAheadActorsProps) {
     return (
         <div className="mb-3">
             <label>{props.displayName}</label>
-            <Typeahead
+            <AsyncTypeahead
                 id="typeahead"
                 onChange={actors => {
-                    
                     if (props.actors.findIndex(x => x.id === actors[0].id) === -1){
+                        actors[0].character = '';
                         props.onAdd([...props.actors, actors[0]]);
                     }
-
-                    console.log(actors);
                 }}
                 options={actors}
                 labelKey={actor => actor.name}
-                filterBy={['name']}
+                filterBy={() => true}
+                isLoading={isLoading}
+                onSearch={handleSearch}
                 placeholder="Write the name of the actor..."
                 minLength={1}
                 flip={true}
