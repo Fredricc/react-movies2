@@ -3,7 +3,7 @@ import Menu from './Menu';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import configureValidations from './Validations';
 import { useEffect, useState } from 'react';
-import routes from './Movies/RouteComponents/RouteConfig';
+import routes from './routeconfig';
 import { claim } from './auth/auth.models';
 import AuthenticationContext from './auth/AuthenticationContext';
 import { getClaims } from './auth/handleJWT';
