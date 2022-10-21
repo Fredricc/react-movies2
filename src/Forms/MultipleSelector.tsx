@@ -1,67 +1,28 @@
-import './MultipleSelector.css'
+import { Field, useFormikContext } from "formik";
+import ReactMarkdown from "react-markdown";
+import './MarkdownField.css';
 
-export default function MultipleSector(props: multipleSelectorProps){
-
-    function select(item: multipleSelectorModel){
-        const selected = [...props.selected, item];
-        const nonSelected = props.nonSelected.filter(value => value !== item);
-        props.onChange(selected, nonSelected);
-    }
-
-    
-    function deselect(item: multipleSelectorModel){
-        const nonSelected = [...props.nonSelected, item];
-        const selected = props.selected.filter(value => value !== item);
-        props.onChange(selected, nonSelected);
-    }
-
-    
-    function selectAll(){
-        const selected = [...props.selected, ...props.nonSelected];
-        const nonSelected: multipleSelectorModel[] = [];
-        props.onChange(selected, nonSelected);
-    }
-
-    function deselectAll(){
-        const nonSelected = [ ...props.nonSelected,...props.selected];
-        const selected: multipleSelectorModel[] = [];
-        props.onChange(selected, nonSelected);
-    }
-
+export default function MarkdownField(props: markdownFieldProps) {
+    const {values} = useFormikContext<any>();
     return (
-        <div className="mb-3">
-            <label>{props.displayName}</label>
-
-        <div className="multiple-selector">
-            <ul>
-                {props.nonSelected.map(item =>
-                    <li key={item.key} onClick={() => select(item)}>{item.value}</li>)}
-            </ul>
-            <div className="multiple-selector-buttons">
-                <button type="button" onClick={selectAll}>{'>>'}</button>
-                <button type="button" onClick={deselectAll}>{'<<'}</button>
+        <div className="mb-3 form-markdown">
+            <div>
+                <label>{props.displayName}</label>
+                <div>
+                    <Field name={props.field} as="textarea" className="form-textarea" />
+                </div>
             </div>
-
-            <ul>
-                {props.selected.map(item =>
-                    <li key={item.key} onClick={() => deselect(item)}>{item.value}</li>)}
-            </ul>
-
-
-        </div>
+            <div>
+                <label>{props.displayName} (preview):</label>
+                <div className="markdown-container">
+                    <ReactMarkdown>{values[props.field]}</ReactMarkdown>
+                </div>
+            </div>
         </div>
     )
 }
 
-interface multipleSelectorProps{
+interface markdownFieldProps{
     displayName: string;
-    selected: multipleSelectorModel[];
-    nonSelected: multipleSelectorModel[];
-    onChange(selected: multipleSelectorModel[], 
-        nonSelected: multipleSelectorModel[]): void
-}
-
-export interface multipleSelectorModel{
-    key: number;
-    value: string;
+    field: string;
 }
