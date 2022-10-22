@@ -60,7 +60,8 @@ export default function Menu() {
 
                        
                     </ul>
-                    <div className="d-flex">
+                    <div className="d-flex" 
+                  style={{display: 'flex', justifyContent: 'space-between'}}>
                             <Authorized 
                                 authorized={<>
                                     <span className="nav-link">Hello, {getUserEmail()}</span>
