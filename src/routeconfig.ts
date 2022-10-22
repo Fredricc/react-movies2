@@ -14,12 +14,15 @@ import Login from './auth/Login';
 import IndexUsers from './auth/IndexUsers';
 
 import EditGenre from "./genres/EditGenres";
+
 import CreateMovieTheater from "./moviesTheaters/CreateMovieTheater";
 import EditMovieTheater from "./moviesTheaters/EditMovieTheater";
 import IndexMovieTheaters from "./moviesTheaters/IndexMovieTheaters";
+
 import CreateMovie from "./Movies/CreateMovies";
 import EditMovie from "./Movies/EditMovie";
 import FilterMovies from "./Movies/FilterMovies";
+
 import LandingPage from "./Movies/LandingPage";
 import MovieDetails from "./Movies/MovieDetails";
 
@@ -40,6 +43,11 @@ const routes = [
     {path: '/movies/edit/:id(\\d+)', component: EditMovie, isAdmin: true},
     {path: '/movies/filter', component: FilterMovies},
     {path: '/movie/:id(\\d+)', component: MovieDetails},
+
+    {path: '/register', component: Register},
+    {path: '/login', component: Login},
+    {path: '/users', component: IndexUsers, isAdmin: true},
+
 
     {path: '/register', component: Register},
     {path: '/login', component: Login},
